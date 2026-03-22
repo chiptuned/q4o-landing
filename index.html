@@ -471,6 +471,17 @@
       padding-top: 12px;
     }
 
+    /* ========== GIANT LOGO ========== */
+    .giant-logo-section {
+      padding: 80px 0 0;
+      overflow: hidden;
+    }
+    .giant-logo-section svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* ========== CTA BANNER ========== */
     .cta-banner {
       margin: 60px 0;
@@ -507,11 +518,39 @@
 
     /* ========== FOOTER ========== */
     footer {
-      padding: 40px 0;
+      padding: 60px 0 40px;
       border-top: 1px solid var(--gray-200);
-      text-align: center;
       color: var(--gray-500);
       font-size: 0.8rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-400);
+      margin-bottom: 12px;
+    }
+    .footer-col p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .footer-col .entity {
+      font-weight: 600;
+      color: var(--gray-900);
+      font-size: 0.9rem;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--gray-200);
     }
 
     /* ========== RESPONSIVE ========== */
@@ -524,6 +563,7 @@
       .cta-banner { padding: 48px 24px; }
       .calc-box { padding: 24px; }
       .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -736,6 +776,15 @@
     </div>
   </section>
 
+  <!-- GIANT STROKE LOGO -->
+  <section class="giant-logo-section">
+    <svg viewBox="0 0 81 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;">
+      <g transform="translate(-34.977,-92.304)">
+        <path d="m 61.626615,114.36758 -2.540002,-2.15194 c 1.375834,-2.04611 2.187224,-4.48028 2.187224,-7.09084 v -0.0706 c 0,-7.020278 -5.46806,-12.700004 -13.088065,-12.700004 -7.620005,0 -13.15862,5.750282 -13.15862,12.770564 v 0.0706 c 0,7.02028 5.468059,12.7 13.088065,12.7 2.751668,0 5.256392,-0.77611 7.337782,-2.11666 l 2.716391,2.43416 z m -13.440843,-1.48166 c -4.374447,0 -7.478894,-3.52778 -7.478894,-7.76112 v -0.0706 c 0,-4.23333 3.033891,-7.690556 7.408339,-7.690556 4.374447,0 7.478894,3.527776 7.478894,7.761116 v 0.0706 c 0,1.23472 -0.246945,2.39889 -0.670279,3.38666 l -4.056947,-3.66889 -3.457224,3.88056 4.021669,3.42195 c -0.952501,0.45861 -2.046113,0.67028 -3.245558,0.67028 z m 28.998367,4.58611 h 5.185837 v -5.32695 h 3.316113 v -4.40972 H 82.369976 V 92.601181 h -4.586115 l -13.546675,15.698619 0.881945,3.84528 h 12.065008 z m -6.561671,-9.73667 6.561671,-7.69056 v 7.69056 z m 31.785272,10.16 c 7.62,0 13.15862,-5.75028 13.15862,-12.77056 v -0.0706 c 0,-7.020278 -5.46806,-12.700004 -13.08807,-12.700004 -7.620004,0 -13.158619,5.750282 -13.158619,12.770564 v 0.0706 c 0,7.02028 5.468059,12.7 13.088069,12.7 z m 0.0705,-5.00944 c -4.374447,0 -7.478893,-3.52778 -7.478893,-7.76112 v -0.0706 c 0,-4.23333 3.033891,-7.690556 7.408343,-7.690556 4.37444,0 7.47889,3.527776 7.47889,7.761116 v 0.0706 c 0,4.23333 -3.03389,7.69056 -7.40834,7.69056 z" style="fill:none;stroke:#e5e5e5;stroke-width:0.3"/>
+      </g>
+    </svg>
+  </section>
+
   <!-- CTA BANNER -->
   <section id="contact">
     <div class="container">
@@ -750,7 +799,21 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>q4o · AI-native consulting · Paris</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Legal Headquarters</h4>
+          <p class="entity">q4o (damequatre)</p>
+          <p>173 rue de Courcelles<br>75017 Paris, France</p>
+        </div>
+        <div class="footer-col">
+          <h4>Desks</h4>
+          <p class="entity">Intencity Reuilly</p>
+          <p>31 Rue de Reuilly<br>75012 Paris, France</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 q4o · AI-native consulting · Paris</p>
+      </div>
     </div>
   </footer>
 
