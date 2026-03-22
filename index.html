@@ -107,46 +107,47 @@
       pointer-events: none;
     }
 
-    /* ========== POKER CARDS (Fournier EPT SVG) ========== */
+    /* ========== POKER CARDS (Fournier EPT PNG — BIG) ========== */
     .cards-stage {
       position: absolute;
-      right: 4%;
+      right: -8%;
       top: 50%;
       transform: translateY(-50%);
-      width: 360px;
-      height: 420px;
-      perspective: 1200px;
+      width: 550px;
+      height: 700px;
+      perspective: 1000px;
       z-index: 1;
       pointer-events: none;
     }
     .poker-card {
       position: absolute;
-      width: 190px;
-      height: 266px;
-      border-radius: 14px;
+      width: 320px;
+      height: 448px;  /* 5:7 poker ratio */
+      border-radius: 18px;
       transform-style: preserve-3d;
       will-change: transform, opacity;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1))
-             drop-shadow(0 16px 40px rgba(0,0,0,0.2))
-             drop-shadow(0 30px 70px rgba(0,0,0,0.12));
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15))
+             drop-shadow(0 25px 60px rgba(0,0,0,0.25))
+             drop-shadow(0 50px 100px rgba(0,0,0,0.15));
     }
     .poker-card img {
       width: 100%;
       height: 100%;
-      border-radius: 14px;
+      border-radius: 18px;
       display: block;
+      object-fit: cover;
     }
-    /* Initial position: overlapping hand, slight fan */
+    /* Initial position: overlapping, big fan, offset toward hero */
     .queen-spades {
-      top: 50px;
-      left: 30px;
-      transform: rotate(-5deg);
+      top: 60px;
+      left: -20px;
+      transform: rotate(-8deg);
       z-index: 2;
     }
     .five-clubs {
-      top: 20px;
-      left: 90px;
-      transform: rotate(7deg);
+      top: 10px;
+      left: 140px;
+      transform: rotate(12deg);
       z-index: 1;
     }
     .hero-label {
@@ -684,13 +685,13 @@
         <a href="#savings" class="btn-secondary">Calculate Savings ↓</a>
       </div>
     </div>
-    <!-- Poker cards — Fournier EPT SVG -->
+    <!-- Poker cards — Fournier EPT PNG, zoomed big -->
     <div class="cards-stage">
       <div class="poker-card queen-spades">
-        <img src="cards/queen-spades.svg" alt="Queen of Spades" draggable="false"/>
+        <img src="cards/queen-spades.png" alt="Queen of Spades" draggable="false"/>
       </div>
       <div class="poker-card five-clubs">
-        <img src="cards/5-clubs.svg" alt="5 of Clubs" draggable="false"/>
+        <img src="cards/5-clubs.png" alt="5 of Clubs" draggable="false"/>
       </div>
     </div>
   </section>
@@ -996,39 +997,39 @@
       });
     })();
 
-    // Card throwaway animation — dramatic winner's flick, left to right
+    // Card throwaway — massive dramatic throw, winner's celebratory flick
     if (window.innerWidth > 768) {
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "70% top",
-          scrub: 0.6,
+          end: "60% top",
+          scrub: 0.4,
         }
       });
 
-      // Queen of Spades — violent throw right + up, heavy spin
+      // Queen of Spades — VIOLENT throw right + up, maximum spin
       tl.to(".queen-spades", {
-        x: 1200,
-        y: -320,
-        rotationZ: 140,
-        rotateY: 35,
-        scale: 0.6,
+        x: 1800,
+        y: -500,
+        rotationZ: 220,
+        rotateY: 45,
+        scale: 0.3,
         opacity: 0,
-        ease: "power3.in"
+        ease: "power4.in"
       }, 0);
 
-      // 5 of Clubs — thrown right + slightly down, different angle
+      // 5 of Clubs — hurled right + down, opposite rotation
       tl.to(".five-clubs", {
-        x: 1400,
-        y: 200,
-        rotationZ: -95,
-        rotateY: -25,
-        scale: 0.55,
+        x: 2000,
+        y: 350,
+        rotationZ: -160,
+        rotateY: -40,
+        scale: 0.25,
         opacity: 0,
-        ease: "power3.in"
-      }, 0.08);
+        ease: "power4.in"
+      }, 0.06);
     }
   </script>
 </body>
