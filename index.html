@@ -239,33 +239,72 @@
     }
 
     /* ========== VALUE PROP ========== */
+    /* ========== COPY-REVEAL (Apple-style) ========== */
     .value-section {
-      padding: 100px 0;
+      padding: 0;
+      position: relative;
     }
-    .value-header {
+    .copy-reveal-wrap {
+      min-height: 300vh;  /* tall scroll runway */
+      position: relative;
+    }
+    .copy-reveal-sticky {
+      position: sticky;
+      top: 0;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 40px;
-      margin-bottom: 24px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
     }
-    .value-icon {
-      font-size: 2rem;
+    .reveal-stats {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .reveal-stat {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-align: center;
+      opacity: 0.12;
+      transform: translateY(8px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  filter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: blur(2px);
+      will-change: opacity, transform, filter;
+    }
+    .reveal-stat.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    .reveal-stat.is-past {
+      opacity: 0.25;
+      transform: translateY(-4px);
+      filter: blur(0);
+    }
+    .reveal-stat strong {
       color: var(--accent);
     }
-    .value-section h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+    .reveal-body {
       max-width: 600px;
-    }
-    .value-desc {
-      font-size: 1.05rem;
+      text-align: center;
+      font-size: 1.1rem;
       color: var(--gray-600);
-      max-width: 600px;
-      margin-top: 16px;
-      line-height: 1.7;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-body.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ========== EXPERTISE CARDS ========== */
@@ -609,6 +648,8 @@
       .calc-box { padding: 24px; }
       .nav-links { display: none; }
       .cards-stage { display: none; }
+      .copy-reveal-wrap { min-height: 200vh; }
+      .reveal-stat { font-size: clamp(1.6rem, 6vw, 2.4rem); }
       .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -668,18 +709,22 @@
     </div>
   </section>
 
-  <!-- VALUE PROP -->
-  <section class="value-section">
-    <div class="container">
-      <div class="value-header">
-        <div>
-          <div class="value-icon">✦</div>
-          <h2>Lean AI Agents, Not Expensive Juniors_</h2>
+  <!-- VALUE PROP — Apple CopyReveal -->
+  <section class="value-section" id="value-reveal">
+    <div class="copy-reveal-wrap">
+      <div class="copy-reveal-sticky">
+        <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+          <div class="reveal-stats">
+            <div class="reveal-stat" data-reveal="0"><strong>70%</strong> lower project costs</div>
+            <div class="reveal-stat" data-reveal="1"><strong>Zero</strong> ramp-up time</div>
+            <div class="reveal-stat" data-reveal="2"><strong>AI agents</strong> supervised by senior leads</div>
+            <div class="reveal-stat" data-reveal="3">Lean methodology. <strong>No bloat.</strong></div>
+          </div>
+          <p class="reveal-body">
+            Traditional ESNs sell you junior consultants at senior prices. q4o trains AI agents on lean methodology and pairs them with senior human leads. You get faster delivery, zero ramp-up time, and 70% lower project costs.
+          </p>
         </div>
       </div>
-      <p class="value-desc">
-        Traditional ESNs sell you junior consultants at senior prices. q4o trains AI agents on lean methodology and pairs them with senior human leads. You get faster delivery, zero ramp-up time, and 70% lower project costs.
-      </p>
     </div>
   </section>
 
@@ -911,9 +956,48 @@
       });
     });
 
+    // ====== CopyReveal — Apple-style scroll spotlight ======
+    gsap.registerPlugin(ScrollTrigger);
+
+    (function() {
+      const wrap = document.querySelector('.copy-reveal-wrap');
+      const stats = document.querySelectorAll('.reveal-stat');
+      const body = document.querySelector('.reveal-body');
+      const totalStats = stats.length;
+
+      // Each stat gets an equal slice of the scroll runway
+      // Last slice is for the body paragraph fade-in
+      ScrollTrigger.create({
+        trigger: wrap,
+        start: "top top",
+        end: "bottom bottom",
+        onUpdate: (self) => {
+          const p = self.progress; // 0 → 1
+          // Divide progress into (N stats + 1 for body) segments
+          const segments = totalStats + 1;
+          const activeIndex = Math.min(Math.floor(p * segments), totalStats);
+
+          stats.forEach((stat, i) => {
+            stat.classList.remove('is-active', 'is-past');
+            if (i === activeIndex && activeIndex < totalStats) {
+              stat.classList.add('is-active');
+            } else if (i < activeIndex) {
+              stat.classList.add('is-past');
+            }
+          });
+
+          // Body paragraph fades in during the last segment
+          if (activeIndex >= totalStats) {
+            body.classList.add('is-visible');
+          } else {
+            body.classList.remove('is-visible');
+          }
+        }
+      });
+    })();
+
     // Card throwaway animation — dramatic winner's flick, left to right
     if (window.innerWidth > 768) {
-      gsap.registerPlugin(ScrollTrigger);
 
       const tl = gsap.timeline({
         scrollTrigger: {
