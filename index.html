@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>q4o | AI Consultants. 70% Less.</title>
+  <meta name="description" content="q4o delivers AI agents trained with lean methodology as your consultants. Data, AI, and engineering projects at 70% less than traditional ESN." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♦️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-400: #a3a3a3;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-900: #171717;
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --accent-glow: rgba(124, 58, 237, 0.08);
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-900);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--black);
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-600);
+    }
+    .nav-links a:hover { color: var(--black); }
+    .btn-nav {
+      padding: 10px 24px;
+      border-radius: 100px;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover { background: var(--gray-900); transform: translateY(-1px); }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: -100px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--gray-600);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-200);
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: var(--gray-400); color: var(--black); }
+
+    /* ========== LOGOS ========== */
+    .logos-section {
+      padding: 60px 0;
+      border-top: 1px solid var(--gray-200);
+    }
+    .logos-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray-400);
+      margin-bottom: 32px;
+    }
+    .logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      opacity: 0.5;
+    }
+    .logos-row span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* ========== VALUE PROP ========== */
+    .value-section {
+      padding: 100px 0;
+    }
+    .value-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 24px;
+    }
+    .value-icon {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    .value-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 600px;
+    }
+    .value-desc {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    /* ========== EXPERTISE CARDS ========== */
+    .expertise-section {
+      padding: 80px 0;
+    }
+    .expertise-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .expertise-sub {
+      color: var(--gray-500);
+      margin-bottom: 48px;
+    }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .expertise-card {
+      padding: 36px;
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      transition: all 0.2s;
+    }
+    .expertise-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: 0 4px 24px var(--accent-glow);
+    }
+    .expertise-card .icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .expertise-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .expertise-card p {
+      color: var(--gray-600);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* ========== CALCULATOR ========== */
+    .calc-section {
+      padding: 80px 0;
+    }
+    .calc-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .calc-sub {
+      color: var(--gray-500);
+      margin-bottom: 40px;
+    }
+    .calc-box {
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      padding: 48px;
+    }
+    .calc-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+    .team-sizes {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .team-btn {
+      padding: 10px 20px;
+      border: 1px solid var(--gray-200);
+      border-radius: 100px;
+      background: var(--white);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .team-btn.active {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .calc-slider {
+      width: 100%;
+      margin-bottom: 32px;
+      accent-color: var(--black);
+    }
+    .calc-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .calc-card {
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+    }
+    .calc-card-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-500);
+      margin-bottom: 8px;
+    }
+    .calc-card-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .calc-card-note {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+    .savings-value { color: var(--green); }
+    .calc-ready {
+      text-align: center;
+      padding: 12px;
+      background: rgba(34, 197, 94, 0.08);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .calc-cta {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ========== PROCESS ========== */
+    .process-section {
+      padding: 100px 0;
+      text-align: center;
+    }
+    .process-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .process-sub {
+      color: var(--gray-500);
+      margin-bottom: 64px;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--gray-200);
+    }
+    .step-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .step:first-child .step-dot { background: var(--accent); }
+    .step h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step p {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+
+    /* ========== FAQ ========== */
+    .faq-section {
+      padding: 80px 0;
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+    }
+    .faq-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .faq-note {
+      color: var(--gray-500);
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .faq-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-200);
+      cursor: pointer;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .faq-q svg {
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      color: var(--gray-400);
+    }
+    .faq-item.open .faq-q svg { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--gray-600);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-top: 12px;
+    }
+
+    /* ========== CTA BANNER ========== */
+    .cta-banner {
+      margin: 60px 0;
+      padding: 80px;
+      background: var(--black);
+      border-radius: 24px;
+      text-align: center;
+      color: var(--white);
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      color: var(--gray-400);
+      margin-bottom: 32px;
+      font-size: 1.05rem;
+    }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: var(--white);
+      color: var(--black);
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.15); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--gray-200);
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.8rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .expertise-grid { grid-template-columns: 1fr; }
+      .calc-results { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .faq-layout { grid-template-columns: 1fr; gap: 32px; }
+      .cta-banner { padding: 48px 24px; }
+      .calc-box { padding: 24px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="/" class="logo"><img src="/logo.svg" alt="q4o" height="28" /></a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#savings">Savings</a>
+        <a href="#process">Process</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn-nav">Let's talk ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <p class="hero-label">AI-native consulting. Lean-trained agents.</p>
+      <h1>AI Consultants for 70% Less.</h1>
+      <p class="hero-desc">
+        The economics of consulting have changed. q4o deploys AI agents trained with lean methodology to deliver data, AI, and engineering projects. Same quality. Fraction of the cost.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Book a Pilot ↗</a>
+        <a href="#savings" class="btn-secondary">Calculate Savings ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section class="logos-section">
+    <div class="container">
+      <p class="logos-label">Replacing the overhead of</p>
+      <div class="logos-row">
+        <span>Accenture</span>
+        <span>Capgemini</span>
+        <span>Theodo</span>
+        <span>McKinsey Digital</span>
+        <span>BCG X</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROP -->
+  <section class="value-section">
+    <div class="container">
+      <div class="value-header">
+        <div>
+          <div class="value-icon">✦</div>
+          <h2>Lean AI Agents, Not Expensive Juniors_</h2>
+        </div>
+      </div>
+      <p class="value-desc">
+        Traditional ESNs sell you junior consultants at senior prices. q4o trains AI agents on lean methodology and pairs them with senior human leads. You get faster delivery, zero ramp-up time, and 70% lower project costs.
+      </p>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="expertise-section" id="services">
+    <div class="container">
+      <h2>Key Expertise</h2>
+      <p class="expertise-sub">Lean. Specialized. AI-first.</p>
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <div class="icon">✦</div>
+          <h3>Data Engineering</h3>
+          <p>Pipelines, lakehouse architectures, real-time streaming. Our agents build production-grade data infrastructure using dbt, Spark, Airflow, and modern tooling.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="icon">✦</div>
+          <h3>AI / ML Engineering</h3>
+          <p>From fine-tuning LLMs to deploying inference pipelines. We ship models to production, not PowerPoint decks. MLOps, RAG, agents, evaluation.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="icon">✦</div>
+          <h3>Full-Stack Development</h3>
+          <p>Web apps, APIs, cloud infrastructure. Python, Rust, TypeScript. Our agents write code, our humans review it. Ship faster with leaner teams.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="icon">✦</div>
+          <h3>AI Strategy & Lean Transformation</h3>
+          <p>Where to apply AI for maximum ROI. We audit your workflows, identify waste, and deploy agents that eliminate it. Lean methodology, applied to AI adoption.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calc-section" id="savings">
+    <div class="container">
+      <h2>How Much Can You Save?</h2>
+      <p class="calc-sub">Compare q4o with traditional consulting firms</p>
+      <div class="calc-box">
+        <p class="calc-label">Select your project scope:</p>
+        <div class="team-sizes">
+          <button class="team-btn" data-months="1">1 month</button>
+          <button class="team-btn active" data-months="3">3 months</button>
+          <button class="team-btn" data-months="6">6 months</button>
+          <button class="team-btn" data-months="12">12 months</button>
+        </div>
+        <input type="range" class="calc-slider" id="teamSlider" min="1" max="5" value="2" />
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:var(--gray-400);margin-top:-24px;margin-bottom:24px;">
+          <span>1 agent</span><span>2</span><span>3</span><span>4</span><span>5 agents</span>
+        </div>
+        <div class="calc-results">
+          <div class="calc-card">
+            <p class="calc-card-label">Traditional ESN cost</p>
+            <p class="calc-card-value" id="esnCost">108 000 EUR</p>
+            <p class="calc-card-note">(for 2 consultants, 3 months)</p>
+          </div>
+          <div class="calc-card">
+            <p class="calc-card-label">Your savings with q4o</p>
+            <p class="calc-card-value savings-value" id="q4oSavings">75 600 EUR*</p>
+            <p class="calc-card-note">(70% reduction)</p>
+          </div>
+        </div>
+        <div class="calc-ready">
+          ✦ Ready to start in days, not months
+        </div>
+        <div class="calc-cta">
+          <a href="#contact" class="btn-primary">Book a Pilot →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <h2>Our Process_</h2>
+      <p class="process-sub">From your brief to deployed agents.</p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-dot"></div>
+          <h4>Define scope</h4>
+          <p>You explain the project. We map it to lean work units.</p>
+        </div>
+        <div class="step">
+          <div class="step-dot"></div>
+          <h4>Configure agents</h4>
+          <p>We train and configure AI agents specific to your stack and domain.</p>
+        </div>
+        <div class="step">
+          <div class="step-dot"></div>
+          <h4>Ship iteratively</h4>
+          <p>Agents deliver. Senior leads review. You get production code, not slides.</p>
+        </div>
+        <div class="step">
+          <div class="step-dot"></div>
+          <h4>Scale or stop</h4>
+          <p>No lock-in. Scale agents up when it works, shut them down when done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="faq-layout">
+        <div>
+          <h2>Frequently Asked Questions</h2>
+          <p class="faq-note">Answers to the most common questions about the q4o model.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">
+              Are the AI agents fully autonomous?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">No. Every agent is supervised by a senior human lead. AI handles the volume work (code generation, data pipeline scaffolding, testing, documentation), while humans handle architecture decisions, code review, and client communication.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              How do you guarantee quality at 70% less?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">Traditional ESNs bill for time, not output. Most junior consultant time goes to learning the stack, writing boilerplate, and sitting in meetings. Our AI agents eliminate that overhead. You pay for deliverables, not headcount.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              What's the lean methodology angle?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">Every project is broken down into value streams. We identify waste (waiting, context switching, rework) and configure agents to eliminate it. Short iterations, continuous delivery, no bloat.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              Can I start with a small pilot?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">Yes. Most clients start with a 1-month, 1-agent pilot on a contained scope. No long-term commitment required. If it works, scale. If not, stop.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">
+              What technologies do you cover?
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">Python, Rust, TypeScript, SQL, dbt, Spark, Airflow, Terraform, AWS/GCP/Azure, React, FastAPI, LangChain, and most modern data/AI stacks. Our agents are trained on your codebase and conventions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Ready to cut project costs by 70%?</h2>
+        <p>Book a 30-minute call. We'll scope your first pilot for free.</p>
+        <a href="mailto:vincent@fraillon.com" class="btn-white">Let's talk ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>q4o · AI-native consulting · Paris</p>
+    </div>
+  </footer>
+
+  <script>
+    // Calculator
+    const slider = document.getElementById('teamSlider');
+    const esnCostEl = document.getElementById('esnCost');
+    const q4oSavingsEl = document.getElementById('q4oSavings');
+    const teamBtns = document.querySelectorAll('.team-btn');
+    let selectedMonths = 3;
+
+    const ESN_RATE_PER_MONTH = 18000; // EUR per consultant/month (traditional ESN)
+    const SAVINGS_RATE = 0.70;
+
+    function updateCalc() {
+      const agents = parseInt(slider.value);
+      const esnTotal = agents * selectedMonths * ESN_RATE_PER_MONTH;
+      const savings = Math.round(esnTotal * SAVINGS_RATE);
+      esnCostEl.textContent = esnTotal.toLocaleString('en-US').replace(/,/g, ' ') + ' EUR';
+      q4oSavingsEl.textContent = savings.toLocaleString('en-US').replace(/,/g, ' ') + ' EUR*';
+      esnCostEl.nextElementSibling.textContent = `(for ${agents} consultant${agents > 1 ? 's' : ''}, ${selectedMonths} month${selectedMonths > 1 ? 's' : ''})`;
+    }
+
+    slider.addEventListener('input', updateCalc);
+    teamBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        teamBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedMonths = parseInt(btn.dataset.months);
+        updateCalc();
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
