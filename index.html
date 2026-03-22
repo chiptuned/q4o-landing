@@ -107,144 +107,46 @@
       pointer-events: none;
     }
 
-    /* ========== POKER CARDS (Fournier EPT style) ========== */
+    /* ========== POKER CARDS (Fournier EPT SVG) ========== */
     .cards-stage {
       position: absolute;
-      right: 6%;
+      right: 4%;
       top: 50%;
       transform: translateY(-50%);
-      width: 320px;
-      height: 400px;
-      perspective: 1400px;
+      width: 360px;
+      height: 420px;
+      perspective: 1200px;
       z-index: 1;
       pointer-events: none;
     }
     .poker-card {
       position: absolute;
-      width: 180px;
-      height: 252px;  /* 5:7 poker ratio */
-      border-radius: 10px;
-      background: #fefefe;
-      box-shadow:
-        0 1px 3px rgba(0,0,0,0.08),
-        0 8px 20px rgba(0,0,0,0.12),
-        0 20px 50px rgba(0,0,0,0.18);
+      width: 190px;
+      height: 266px;
+      border-radius: 14px;
       transform-style: preserve-3d;
       will-change: transform, opacity;
-      overflow: hidden;
-      border: 0.5px solid rgba(0,0,0,0.08);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1))
+             drop-shadow(0 16px 40px rgba(0,0,0,0.2))
+             drop-shadow(0 30px 70px rgba(0,0,0,0.12));
     }
-    /* Gloss sheen */
-    .poker-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.02) 100%);
-      border-radius: 10px;
-      pointer-events: none;
-      z-index: 5;
-    }
-    .card-face {
+    .poker-card img {
       width: 100%;
       height: 100%;
-      position: relative;
-      background: #fff;
-      border-radius: 10px;
-      border: 6px solid #fff;
-      box-sizing: border-box;
+      border-radius: 14px;
+      display: block;
     }
-    /* Inner border like real cards */
-    .card-face::before {
-      content: '';
-      position: absolute;
-      inset: 2px;
-      border: 0.5px solid rgba(0,0,0,0.06);
-      border-radius: 5px;
-      pointer-events: none;
-    }
-    /* Jumbo index corners */
-    .card-idx {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: 1;
-      gap: 1px;
-      user-select: none;
-    }
-    .card-idx-tl { top: 8px; left: 10px; }
-    .card-idx-br { bottom: 8px; right: 10px; transform: rotate(180deg); }
-    .card-idx .rank {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 1.65rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .card-idx .pip {
-      font-size: 1.05rem;
-      line-height: 1;
-    }
-    /* Center pip area */
-    .card-pips {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Red suits */
-    .suit-red .rank, .suit-red .pip { color: #c41e2a; }
-    .suit-red .card-pips { color: #c41e2a; }
-    /* Black suits */
-    .suit-black .rank, .suit-black .pip { color: #1a1a1a; }
-    .suit-black .card-pips { color: #1a1a1a; }
-
-    /* Queen face art */
-    .queen-art {
-      width: 100px;
-      height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .queen-art .crown {
-      font-size: 2.2rem;
-      margin-bottom: -4px;
-    }
-    .queen-art .face-symbol {
-      font-size: 4rem;
-      line-height: 1;
-    }
-    .queen-art .suit-badge {
-      font-size: 1.6rem;
-      margin-top: -2px;
-    }
-    /* 4-pip layout */
-    .four-pip-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 32px;
-      font-size: 2.8rem;
-      line-height: 1;
-    }
-    .four-pip-grid span:nth-child(3),
-    .four-pip-grid span:nth-child(4) {
-      transform: rotate(180deg);
-    }
-
     /* Initial position: overlapping hand, slight fan */
-    .queen-hearts {
+    .queen-spades {
       top: 50px;
-      left: 40px;
-      transform: rotate(-3deg);
+      left: 30px;
+      transform: rotate(-5deg);
       z-index: 2;
     }
-    .four-spades {
-      top: 30px;
-      left: 80px;
-      transform: rotate(5deg);
+    .five-clubs {
+      top: 20px;
+      left: 90px;
+      transform: rotate(7deg);
       z-index: 1;
     }
     .hero-label {
@@ -741,43 +643,13 @@
         <a href="#savings" class="btn-secondary">Calculate Savings ↓</a>
       </div>
     </div>
-    <!-- Poker cards — Fournier EPT jumbo index style -->
+    <!-- Poker cards — Fournier EPT SVG -->
     <div class="cards-stage">
-      <div class="poker-card queen-hearts suit-red">
-        <div class="card-face">
-          <div class="card-idx card-idx-tl">
-            <span class="rank">Q</span>
-            <span class="pip">♥</span>
-          </div>
-          <div class="card-pips">
-            <div class="queen-art">
-              <span class="crown">♛</span>
-              <span class="suit-badge">♥</span>
-            </div>
-          </div>
-          <div class="card-idx card-idx-br">
-            <span class="rank">Q</span>
-            <span class="pip">♥</span>
-          </div>
-        </div>
+      <div class="poker-card queen-spades">
+        <img src="cards/queen-spades.svg" alt="Queen of Spades" draggable="false"/>
       </div>
-      <div class="poker-card four-spades suit-black">
-        <div class="card-face">
-          <div class="card-idx card-idx-tl">
-            <span class="rank">4</span>
-            <span class="pip">♠</span>
-          </div>
-          <div class="card-pips">
-            <div class="four-pip-grid">
-              <span>♠</span><span>♠</span>
-              <span>♠</span><span>♠</span>
-            </div>
-          </div>
-          <div class="card-idx card-idx-br">
-            <span class="rank">4</span>
-            <span class="pip">♠</span>
-          </div>
-        </div>
+      <div class="poker-card five-clubs">
+        <img src="cards/5-clubs.svg" alt="5 of Clubs" draggable="false"/>
       </div>
     </div>
   </section>
@@ -1039,7 +911,7 @@
       });
     });
 
-    // Card throwaway animation — left to right, non-blocking
+    // Card throwaway animation — dramatic winner's flick, left to right
     if (window.innerWidth > 768) {
       gsap.registerPlugin(ScrollTrigger);
 
@@ -1047,32 +919,32 @@
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "80% top",
-          scrub: 0.8,
+          end: "70% top",
+          scrub: 0.6,
         }
       });
 
-      // Queen — thrown hard to the right and up (winner's flick)
-      tl.to(".queen-hearts", {
-        x: 700,
-        y: -180,
-        rotationZ: 65,
-        rotateY: 20,
-        scale: 0.85,
+      // Queen of Spades — violent throw right + up, heavy spin
+      tl.to(".queen-spades", {
+        x: 1200,
+        y: -320,
+        rotationZ: 140,
+        rotateY: 35,
+        scale: 0.6,
         opacity: 0,
-        ease: "power2.in"
+        ease: "power3.in"
       }, 0);
 
-      // 4 of Spades — thrown right and down (second card, slightly delayed)
-      tl.to(".four-spades", {
-        x: 850,
-        y: 120,
-        rotationZ: 40,
-        rotateY: -15,
-        scale: 0.9,
+      // 5 of Clubs — thrown right + slightly down, different angle
+      tl.to(".five-clubs", {
+        x: 1400,
+        y: 200,
+        rotationZ: -95,
+        rotateY: -25,
+        scale: 0.55,
         opacity: 0,
-        ease: "power2.in"
-      }, 0.05);
+        ease: "power3.in"
+      }, 0.08);
     }
   </script>
 </body>
