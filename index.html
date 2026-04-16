@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>q4o | AI Consultants. 70% Less.</title>
-  <meta name="description" content="q4o delivers AI agents trained with lean methodology as your consultants. Data, AI, and engineering projects at 70% less than traditional ESN." />
+  <meta name="description" content="q4o pairs battle-tested AI agents with senior engineers to deliver data, AI, and software projects at 70% less than traditional consulting firms. Lean methodology. French-sovereign cloud. No lock-in." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♦️</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -310,6 +310,89 @@
       line-height: 1.6;
     }
 
+    /* ========== WHY IT WORKS ========== */
+    .why-section {
+      padding: 100px 0 80px;
+      background: var(--gray-50);
+    }
+    .why-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .why-sub {
+      color: var(--gray-500);
+      text-align: center;
+      margin-bottom: 56px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .why-card {
+      text-align: center;
+      padding: 40px 28px;
+    }
+    .why-number {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+    .why-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .why-card p {
+      color: var(--gray-600);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .methodology-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 48px;
+      padding: 16px 28px;
+      border: 1px solid var(--gray-200);
+      border-radius: 100px;
+      background: var(--white);
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .methodology-badge .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .methodology-badge span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+    .methodology-badge a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    @media (max-width: 768px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
     /* ========== CALCULATOR ========== */
     .calc-section {
       padding: 80px 0;
@@ -457,6 +540,47 @@
       font-size: 0.82rem;
       color: var(--gray-500);
       line-height: 1.5;
+    }
+
+    /* ========== TRUST ========== */
+    .trust-section {
+      padding: 80px 0;
+      background: var(--gray-50);
+    }
+    .trust-section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .trust-card {
+      padding: 32px;
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      background: var(--white);
+    }
+    .trust-card .trust-icon {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .trust-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .trust-card p {
+      color: var(--gray-600);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    @media (max-width: 768px) {
+      .trust-grid { grid-template-columns: 1fr; }
     }
 
     /* ========== FAQ ========== */
@@ -634,7 +758,7 @@
       <p class="hero-label">AI-native consulting. Lean-trained agents.</p>
       <h1>AI Consultants for 70% Less.</h1>
       <p class="hero-desc">
-        The economics of consulting have changed. q4o deploys AI agents trained with lean methodology to deliver data, AI, and engineering projects. Same quality. Fraction of the cost.
+        Hiring a consulting firm shouldn't mean paying for juniors who learn on your dime. q4o pairs battle-tested AI agents with senior engineers to deliver real projects — data, AI, software — at a fraction of the usual cost.
       </p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">Book a Pilot ↗</a>
@@ -669,7 +793,7 @@
             <div class="reveal-stat" data-reveal="3">Lean methodology. <strong>No bloat.</strong></div>
           </div>
           <p class="reveal-body">
-            Traditional ESNs sell you junior consultants at senior prices. q4o trains AI agents on lean methodology and pairs them with senior human leads. You get faster delivery, zero ramp-up time, and 70% lower project costs.
+            Traditional consulting firms charge senior rates for junior work. q4o uses AI agents backed by a proven lean methodology — paired with senior engineers who've built this before. You get better results, faster delivery, and keep 70% of what you'd normally spend.
           </p>
         </div>
       </div>
@@ -679,29 +803,58 @@
   <!-- EXPERTISE -->
   <section class="expertise-section" id="services">
     <div class="container">
-      <h2>Key Expertise</h2>
-      <p class="expertise-sub">Lean. Specialized. AI-first.</p>
+      <h2>What We Solve</h2>
+      <p class="expertise-sub">Complex problems. Simple results.</p>
       <div class="expertise-grid">
         <div class="expertise-card">
           <div class="icon">✦</div>
-          <h3>Data Engineering</h3>
-          <p>Pipelines, lakehouse architectures, real-time streaming. Our agents build production-grade data infrastructure using dbt, Spark, Airflow, and modern tooling.</p>
+          <h3>Turn Your Data Into Decisions</h3>
+          <p>Your data is scattered, slow, or unreliable. We build the infrastructure that lets you trust your numbers — real-time dashboards, automated pipelines, clean data you can actually act on.</p>
         </div>
         <div class="expertise-card">
           <div class="icon">✦</div>
-          <h3>AI / ML Engineering</h3>
-          <p>From fine-tuning LLMs to deploying inference pipelines. We ship models to production, not PowerPoint decks. MLOps, RAG, agents, evaluation.</p>
+          <h3>Put AI to Work — For Real</h3>
+          <p>Not a proof of concept. Not a demo. We deploy AI that runs in your business every day — automating operations, accelerating decisions, and delivering measurable ROI within weeks.</p>
         </div>
         <div class="expertise-card">
           <div class="icon">✦</div>
-          <h3>Full-Stack Development</h3>
-          <p>Web apps, APIs, cloud infrastructure. Python, Rust, TypeScript. Our agents write code, our humans review it. Ship faster with leaner teams.</p>
+          <h3>Build Products That Ship</h3>
+          <p>Need an app, a platform, or an internal tool? Our agents write production code while senior engineers review every line. You get working software, fast — without the agency markup.</p>
         </div>
         <div class="expertise-card">
           <div class="icon">✦</div>
-          <h3>AI Strategy & Lean Transformation</h3>
-          <p>Where to apply AI for maximum ROI. We audit your workflows, identify waste, and deploy agents that eliminate it. Lean methodology, applied to AI adoption.</p>
+          <h3>Find the Waste. Kill It.</h3>
+          <p>Most companies lose 30-40% of project budgets to rework, miscommunication, and idle time. We audit your workflows, find what's broken, and deploy agents that fix it permanently.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT WORKS -->
+  <section class="why-section">
+    <div class="container">
+      <h2>Why It Actually Works</h2>
+      <p class="why-sub">Our agents aren't generic AI tools. They run on a proprietary lean methodology we built, tested, and refine across every engagement. Plan, build, review, improve — with the right AI model selected for each step, not whatever's trendy.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-number">0</div>
+          <h3>Rework Tolerance</h3>
+          <p>Our agents stop the moment a defect is detected. No patching, no workarounds. Problems are analyzed at the root and fixed before anything moves forward.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">5×</div>
+          <h3>Quality Checkpoints</h3>
+          <p>Every deliverable passes through five independent quality dimensions — safety, quality, delivery, cost, and compliance — before it reaches you.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-number">∞</div>
+          <h3>Continuous Learning</h3>
+          <p>Every project teaches our agents something new. Lessons are captured, stored, and applied to the next engagement. Your second project is always better than the first.</p>
+        </div>
+      </div>
+      <div class="methodology-badge">
+        <div class="badge-dot"></div>
+        <span>Proprietary methodology. Battle-tested in-house. Every decision logged, every lesson captured, every build reviewed.</span>
       </div>
     </div>
   </section>
@@ -749,27 +902,51 @@
   <section class="process-section" id="process">
     <div class="container">
       <h2>Our Process_</h2>
-      <p class="process-sub">From your brief to deployed agents.</p>
+      <p class="process-sub">From your problem to a working solution.</p>
       <div class="process-steps">
         <div class="step">
           <div class="step-dot"></div>
-          <h4>Define scope</h4>
-          <p>You explain the project. We map it to lean work units.</p>
+          <h4>You explain the problem</h4>
+          <p>A 30-minute call. No jargon required. Tell us what's broken or what you need built.</p>
         </div>
         <div class="step">
           <div class="step-dot"></div>
-          <h4>Configure agents</h4>
-          <p>We train and configure AI agents specific to your stack and domain.</p>
+          <h4>We scope and price it</h4>
+          <p>A clear proposal within 48 hours. Fixed price, defined deliverables, no surprises.</p>
         </div>
         <div class="step">
           <div class="step-dot"></div>
-          <h4>Ship iteratively</h4>
-          <p>Agents deliver. Senior leads review. You get production code, not slides.</p>
+          <h4>We build, you review</h4>
+          <p>Weekly demos of real, working progress. Not status reports — actual results you can see and test.</p>
         </div>
         <div class="step">
           <div class="step-dot"></div>
-          <h4>Scale or stop</h4>
-          <p>No lock-in. Scale agents up when it works, shut them down when done.</p>
+          <h4>Scale or walk away</h4>
+          <p>Happy? Add more scope. Done? Everything we built is yours. No lock-in, no exit fees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust-section">
+    <div class="container">
+      <h2>Built for Trust</h2>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">◆</div>
+          <h3>Senior-Led, Always</h3>
+          <p>Every project is supervised by a senior engineer with 10+ years of experience. AI handles execution; humans make the decisions that matter.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">◆</div>
+          <h3>Your Data Stays Yours</h3>
+          <p>Our AI runs on Scaleway — a French cloud provider operating exclusively on French soil. Your code, your data, your intellectual property stay GDPR-native with zero cross-border transfer.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">◆</div>
+          <h3>No Lock-In. Ever.</h3>
+          <p>Start with a one-month pilot. Scale when it works, stop when it's done. We deliver working code you own — no proprietary platforms, no dependency traps.</p>
         </div>
       </div>
     </div>
@@ -786,38 +963,38 @@
         <div class="faq-list">
           <div class="faq-item">
             <div class="faq-q">
-              Are the AI agents fully autonomous?
+              Who's actually doing the work — a robot?
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
             </div>
-            <div class="faq-a">No. Every agent is supervised by a senior human lead. AI handles the volume work (code generation, data pipeline scaffolding, testing, documentation), while humans handle architecture decisions, code review, and client communication.</div>
+            <div class="faq-a">AI agents handle the heavy lifting — building, testing, documenting. But every decision and every delivery is reviewed by a senior engineer with 10+ years of experience. Think of it as a senior architect with a tireless team that never sleeps.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q">
-              How do you guarantee quality at 70% less?
+              70% savings sounds too good to be true. What's the catch?
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
             </div>
-            <div class="faq-a">Traditional ESNs bill for time, not output. Most junior consultant time goes to learning the stack, writing boilerplate, and sitting in meetings. Our AI agents eliminate that overhead. You pay for deliverables, not headcount.</div>
+            <div class="faq-a">No catch — just a different model. Traditional firms bill for headcount and hours, including all the time juniors spend learning your business. Our agents already know how to execute. You pay for results, not ramp-up. The savings come from eliminating overhead, not cutting corners.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q">
-              What's the lean methodology angle?
+              What if the project doesn't work out?
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
             </div>
-            <div class="faq-a">Every project is broken down into value streams. We identify waste (waiting, context switching, rework) and configure agents to eliminate it. Short iterations, continuous delivery, no bloat.</div>
+            <div class="faq-a">Start with a 1-month pilot on a contained scope. No long-term contract. You keep everything we build — all code, all documentation. If it works, scale up. If not, walk away with zero sunk cost beyond the pilot.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q">
-              Can I start with a small pilot?
+              Is my data safe?
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
             </div>
-            <div class="faq-a">Yes. Most clients start with a 1-month, 1-agent pilot on a contained scope. No long-term commitment required. If it works, scale. If not, stop.</div>
+            <div class="faq-a">Yes. Our AI runs on Scaleway, a French cloud provider operating exclusively in France — your code and data stay fully GDPR-compliant and never cross borders. We sign NDAs before any engagement, and you own 100% of what we produce.</div>
           </div>
           <div class="faq-item">
             <div class="faq-q">
-              What technologies do you cover?
+              I don't have a technical team. Can you still help?
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
             </div>
-            <div class="faq-a">Python, Rust, TypeScript, SQL, dbt, Spark, Airflow, Terraform, AWS/GCP/Azure, React, FastAPI, LangChain, and most modern data/AI stacks. Our agents are trained on your codebase and conventions.</div>
+            <div class="faq-a">Absolutely. Many of our clients are business leaders without in-house tech teams. You explain the problem in plain language. We handle everything from architecture to deployment. You get a working product, not a requirements document.</div>
           </div>
         </div>
       </div>
@@ -839,8 +1016,8 @@
   <section id="contact">
     <div class="container">
       <div class="cta-banner">
-        <h2>Ready to cut project costs by 70%?</h2>
-        <p>Book a 30-minute call. We'll scope your first pilot for free.</p>
+        <h2>Ready to see what's possible?</h2>
+        <p>Book a 30-minute call. We'll scope your first pilot for free — no commitment, no jargon.</p>
         <a href="mailto:vincent@fraillon.com" class="btn-white">Let's talk ↗</a>
       </div>
     </div>
