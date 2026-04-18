@@ -1,4 +1,4 @@
-// POST /api/call-me — triggers an OVH Click2Call bridge between Vincent and the visitor.
+// POST /api/call-me - triggers an OVH Click2Call bridge between Vincent and the visitor.
 // Body: { name, phone, note?, 'cf-turnstile-response': token }
 // Env: OVH_*, VINCENT_MOBILE, TURNSTILE_SECRET
 
@@ -60,7 +60,7 @@ export async function onRequestPost({ request, env }) {
   const payload = JSON.stringify({
     calledNumber:  called,
     callingNumber: VINCENT_MOBILE,
-    // Leave intercom default (false) — visitor's phone rings normally
+    // Leave intercom default (false) - visitor's phone rings normally
   });
 
   const toSign = [OVH_APP_SECRET, OVH_CONSUMER_KEY, 'POST', url, payload, timestamp].join('+');

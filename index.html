@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Q4O | Ambitious projects, actually shipped.</title>
-  <meta name="description" content="Q4O is a Paris data studio that ships the data, ML, and software projects big teams quote for six months. Senior engineers on every line. Fixed scope in 48 hours." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♦️</text></svg>" />
+  <meta name="description" content="q4o is a Paris data studio that ships the data, ML, and software projects big teams quote for six months. Senior engineers on every line. Fixed scope in 48 hours." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='52' y='82' text-anchor='middle' font-family='Inter,sans-serif' font-style='italic' font-weight='700' font-size='96' fill='%230891a1'>4</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap" rel="stylesheet" />
@@ -263,6 +263,32 @@
       color: var(--gray-600);
     }
     .nav-links a:hover { color: var(--black); }
+    .nav-lang {
+      display: inline-flex;
+      padding: 2px;
+      background: var(--gray-100);
+      border-radius: 999px;
+      gap: 2px;
+    }
+    .nav-lang button {
+      font: inherit;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      border: 0;
+      background: transparent;
+      border-radius: 999px;
+      color: var(--gray-500);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-lang button[aria-pressed="true"] {
+      background: var(--black);
+      color: var(--white);
+    }
+    .nav-lang button:hover:not([aria-pressed="true"]) { color: var(--black); }
     .btn-nav {
       padding: 10px 24px;
       border-radius: 100px;
@@ -1100,6 +1126,10 @@
         <a href="#savings" data-i18n="nav.savings">Savings</a>
         <a href="#process" data-i18n="nav.process">Process</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <div class="nav-lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        </div>
         <a href="contact.html" class="btn-nav" data-i18n="nav.cta">Let's talk ↗</a>
       </div>
     </div>
@@ -1116,7 +1146,7 @@
         actually <span class="kicker">shipped.</span>
       </h1>
       <p class="hero-desc" data-i18n="hero.desc">
-        Q4O is a Paris data studio. We ship the data, ML, and software your business actually needs, with senior engineers on every decision. Scoped in 48 hours. Delivered in weeks. Yours forever.
+        q4o is a Paris data studio. We ship the data, ML, and software your business actually needs, with senior engineers on every decision. Scoped in 48 hours. Delivered in weeks. Yours forever.
       </p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn-primary" data-i18n="hero.cta1">Bring us a problem ↗</a>
@@ -1270,7 +1300,7 @@
           <div class="block-tag" data-i18n="calc.tag">03 · Budget</div>
           <h2 class="block-title" data-i18n-html="calc.title"><em>Fits the budget,</em><br/>without cutting corners</h2>
         </div>
-        <p class="block-sub" data-i18n="calc.sub">A quick look at what a scoped Q4O engagement costs, versus a standard delivery quote. Slide to match your team size and timeline.</p>
+        <p class="block-sub" data-i18n="calc.sub">A quick look at what a scoped q4o engagement costs, versus a standard delivery quote. Slide to match your team size and timeline.</p>
       </div>
       <div class="calc-box">
         <p class="calc-label" data-i18n="calc.scope">Select your project scope:</p>
@@ -1291,7 +1321,7 @@
             <p class="calc-card-note" id="esnNote">(for 2 people, 3 months)</p>
           </div>
           <div class="calc-card">
-            <p class="calc-card-label" data-i18n="calc.q4oLabel">With Q4O</p>
+            <p class="calc-card-label" data-i18n="calc.q4oLabel">With q4o</p>
             <p class="calc-card-value savings-value" id="q4oSavings">54 000 EUR*</p>
             <p class="calc-card-note" data-i18n="calc.q4oNote"><em>Way less. Scoped.</em></p>
           </div>
@@ -1348,7 +1378,7 @@
       <div class="block-head">
         <div>
           <div class="block-tag" data-i18n="trust.tag">05 · Trust</div>
-          <h2 class="block-title" data-i18n-html="trust.title">Four <em>non-negotiables</em></h2>
+          <h2 class="block-title" data-i18n-html="trust.title">Four <em>commitments</em></h2>
         </div>
         <p class="block-sub" data-i18n="trust.sub">Senior oversight on every engagement. Human review before anything ships. French-sovereign cloud by default. Code that stays yours, no exceptions.</p>
       </div>
@@ -1380,7 +1410,7 @@
         <div>
           <div class="block-tag" data-i18n="faq.tag">06 · FAQ</div>
           <h2 class="block-title" data-i18n-html="faq.title">Frequently asked <em>questions</em></h2>
-          <p class="faq-note" data-i18n="faq.note">Answers to the most common questions about the Q4O model.</p>
+          <p class="faq-note" data-i18n="faq.note">Answers to the most common questions about the q4o model.</p>
         </div>
         <div class="faq-list">
           <div class="faq-item">
@@ -1440,7 +1470,7 @@
       <div class="cta-banner">
         <h2 data-i18n-html="cta.title">Tell us what you're trying to <em>ship</em>.</h2>
         <p data-i18n="cta.sub">A 30-minute call. No jargon. We come back with a scoped proposal in 48 hours, free of charge.</p>
-        <a href="contact.html" class="btn-white" data-i18n="cta.btn">Write to Vincent ↗</a>
+        <a href="contact.html" class="btn-white" data-i18n="cta.btn">Reach a q4o senior ↗</a>
       </div>
     </div>
   </section>
@@ -1451,7 +1481,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h4 data-i18n="foot.hq">Legal Headquarters</h4>
-          <p class="entity">Q4O (damequatre)</p>
+          <p class="entity">q4o (damequatre)</p>
           <p data-i18n-html="foot.hqAddr">173 rue de Courcelles<br>75017 Paris, France</p>
         </div>
         <div class="footer-col">
@@ -1461,8 +1491,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p data-i18n="foot.copy">© 2026 Q4O · Modern data studio · Paris</p>
-        <p class="foot-partners" data-i18n-html="foot.partners">Q4O partners with agencies and consulting firms to deliver the technical side of their client engagements. Partnerships: <a href="mailto:partnerships@q4o.com">partnerships@q4o.com</a></p>
+        <p data-i18n="foot.copy">© 2026 q4o · Modern data studio · Paris</p>
+        <p class="foot-partners" data-i18n-html="foot.partners">q4o partners with agencies and consulting firms to deliver the technical side of their client engagements. Partnerships: <a href="mailto:partnerships@q4o.com">partnerships@q4o.com</a></p>
       </div>
     </div>
   </footer>
@@ -1729,7 +1759,7 @@
 
         'hero.eyebrow': 'Studio data moderne · Paris',
         'hero.h1': '<em>Projets ambitieux,</em><br/>livrés <span class="kicker">pour de vrai.</span>',
-        'hero.desc': "Q4O est un studio data parisien. On livre la data, le ML et le logiciel dont votre activité a vraiment besoin, avec des ingénieurs seniors sur chaque décision. Cadré en 48 heures. Livré en semaines. À vous, pour toujours.",
+        'hero.desc': "q4o est un studio data parisien. On livre la data, le ML et le logiciel dont votre activité a vraiment besoin, avec des ingénieurs seniors sur chaque décision. Cadré en 48 heures. Livré en semaines. À vous, pour toujours.",
         'hero.cta1': 'Apportez-nous un problème ↗',
         'hero.cta2': 'Voir la méthode ↓',
         'hero.stat1': 'de cadrage',
@@ -1775,7 +1805,7 @@
 
         'calc.tag': '03 · Budget',
         'calc.title': '<em>Ça tient dans le budget,</em><br/>sans rogner sur la qualité',
-        'calc.sub': "Un aperçu de ce que coûte une mission Q4O cadrée, face à un devis de livraison standard. Ajustez selon la taille d'équipe et la durée.",
+        'calc.sub': "Un aperçu de ce que coûte une mission q4o cadrée, face à un devis de livraison standard. Ajustez selon la taille d'équipe et la durée.",
         'calc.scope': 'Sélectionnez le périmètre :',
         'calc.m1': '1 mois',
         'calc.m3': '3 mois',
@@ -1785,7 +1815,7 @@
         'calc.a5': '5 agents',
         'calc.esnLabel': 'Devis de livraison standard',
         'calc.esnNote': '(pour {agents} {peopleUnit}, {months} mois)',
-        'calc.q4oLabel': 'Avec Q4O',
+        'calc.q4oLabel': 'Avec q4o',
         'calc.q4oNote': '<em>Bien moins. Cadré.</em>',
         'calc.ready': '✦ Cadré en 48h. Livré en semaines.',
         'calc.foot': "* Indicatif. Le prix définitif est fixé après l'appel de cadrage de 48h.",
@@ -1804,7 +1834,7 @@
         'proc.s4.p': "Démos hebdomadaires de code qui tourne. Pas de slides de suivi. Tout ce qu'on construit est à vous. Étendez le périmètre ou partez.",
 
         'trust.tag': '05 · Confiance',
-        'trust.title': 'Quatre <em>non-négociables</em>',
+        'trust.title': 'Quatre <em>engagements</em>',
         'trust.sub': "Supervision senior sur chaque mission. Relecture humaine avant toute livraison. Cloud souverain français par défaut. Code qui reste à vous, sans exception.",
         'trust.c1.h': 'Supervision senior, toujours',
         'trust.c1.p': "Chaque projet est supervisé par un ingénieur senior avec 10+ ans d'expérience. Les agents exécutent ; les humains prennent les décisions qui comptent.",
@@ -1817,7 +1847,7 @@
 
         'faq.tag': '06 · FAQ',
         'faq.title': 'Questions <em>fréquentes</em>',
-        'faq.note': "Réponses aux questions les plus courantes sur le modèle Q4O.",
+        'faq.note': "Réponses aux questions les plus courantes sur le modèle q4o.",
         'faq.q1': "Qui fait le travail, au juste, un robot ?",
         'faq.a1': "Les agents font le gros du travail : construction, tests, documentation. Chaque décision et chaque livraison est relue par un ingénieur senior avec 10+ ans d'expérience. Voyez ça comme un architecte senior avec une équipe infatigable qui ne dort jamais.",
         'faq.q2': "Comment vos prix sont-ils généralement plus bas qu'un grand cabinet ?",
@@ -1831,14 +1861,14 @@
 
         'cta.title': "Dites-nous ce que vous voulez <em>livrer</em>.",
         'cta.sub': "Un appel de 30 minutes. Sans jargon. On revient avec une proposition cadrée sous 48 heures, sans frais.",
-        'cta.btn': "Écrire à Vincent ↗",
+        'cta.btn': "Parler à un senior q4o ↗",
 
         'foot.hq': 'Siège social',
         'foot.hqAddr': '173 rue de Courcelles<br>75017 Paris, France',
         'foot.desks': 'Bureaux',
         'foot.desksAddr': '31 rue de Reuilly<br>75012 Paris, France',
-        'foot.copy': '© 2026 Q4O · Studio data moderne · Paris',
-        'foot.partners': "Q4O s'associe aux agences et cabinets de conseil pour livrer la partie technique de leurs missions client. Partenariats : <a href=\"mailto:partnerships@q4o.com\">partnerships@q4o.com</a>",
+        'foot.copy': '© 2026 q4o · Studio data moderne · Paris',
+        'foot.partners': "q4o s'associe aux agences et cabinets de conseil pour livrer la partie technique de leurs missions client. Partenariats : <a href=\"mailto:partnerships@q4o.com\">partnerships@q4o.com</a>",
       }
     };
 
@@ -1878,8 +1908,13 @@
     }
 
     harvestEN();
-    let lang = 'en';
-    try { lang = localStorage.getItem(LANG_KEY) || 'en'; } catch(e){}
+    let lang = null;
+    try { lang = localStorage.getItem(LANG_KEY); } catch(e){}
+    if (!lang) {
+      // First visit: default to FR if the browser says FR, otherwise EN.
+      const bl = (navigator.language || 'en').toLowerCase();
+      lang = bl.startsWith('fr') ? 'fr' : 'en';
+    }
     applyLang(lang);
 
     // Expose a refresh hook the calculator closure can call
@@ -1903,8 +1938,8 @@
       bar.classList.add('is-visible');
     }
 
-    // wire buttons
-    bar.querySelectorAll('[data-lang]').forEach(btn => {
+    // Wire every [data-lang] button site-wide (nav toggle + dev bar)
+    document.querySelectorAll('[data-lang]').forEach(btn => {
       btn.addEventListener('click', () => applyLang(btn.dataset.lang));
     });
     bar.querySelectorAll('[data-theme]').forEach(btn => {
