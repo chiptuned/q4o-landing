@@ -1909,11 +1909,16 @@
 
     harvestEN();
     let lang = null;
-    try { lang = localStorage.getItem(LANG_KEY); } catch(e){}
-    if (!lang) {
-      // First visit: default to FR if the browser says FR, otherwise EN.
-      const bl = (navigator.language || 'en').toLowerCase();
-      lang = bl.startsWith('fr') ? 'fr' : 'en';
+    // Priority: ?lang= URL param > localStorage > navigator.language
+    const urlLang = new URLSearchParams(location.search).get('lang');
+    if (urlLang === 'fr' || urlLang === 'en') {
+      lang = urlLang;
+    } else {
+      try { lang = localStorage.getItem(LANG_KEY); } catch(e){}
+      if (!lang) {
+        const bl = (navigator.language || 'en').toLowerCase();
+        lang = bl.startsWith('fr') ? 'fr' : 'en';
+      }
     }
     applyLang(lang);
 

@@ -1,6 +1,45 @@
 // POST /api/call-me - triggers an OVH Click2Call bridge between Vincent and the visitor.
 // Body: { name, phone, note?, 'cf-turnstile-response': token }
 // Env: OVH_*, VINCENT_MOBILE, TURNSTILE_SECRET
+// Rate limits: per-IP (1 call / 2 min), global (5 calls / 2 min), hours gate (Mon-Sat 09:30-18:00 Paris).
+
+const COOLDOWN_SECONDS = 120;       // per-IP and per-phone cooldown
+const GLOBAL_WINDOW_SECONDS = 120;  // global window
+const GLOBAL_MAX_IN_WINDOW = 5;     // max calls globally within window
+
+// Mon-Sat 09:30-18:00 Paris
+function isInParisHours() {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Paris',
+    weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false,
+  }).formatToParts(new Date());
+  const wd = parts.find(p => p.type === 'weekday').value;
+  const hh = parseInt(parts.find(p => p.type === 'hour').value, 10);
+  const mm = parseInt(parts.find(p => p.type === 'minute').value, 10);
+  if (wd === 'Sun') return false;
+  const minutes = hh * 60 + mm;
+  return minutes >= 9 * 60 + 30 && minutes < 18 * 60;
+}
+
+// Cache-API-backed rate limiter. Cloudflare's default cache is per-PoP but good
+// enough to break a single attacker's loop. Belt-and-suspenders: enable
+// Cloudflare Rate Limiting Rules on /api/call-me at the dashboard level too.
+async function cacheCheck(request, keyPath) {
+  const url = new URL(request.url);
+  url.pathname = keyPath;
+  url.search = '';
+  const req = new Request(url.toString(), { method: 'GET' });
+  return caches.default.match(req);
+}
+async function cacheSet(request, keyPath, seconds, value = '1') {
+  const url = new URL(request.url);
+  url.pathname = keyPath;
+  url.search = '';
+  const req = new Request(url.toString(), { method: 'GET' });
+  await caches.default.put(req, new Response(value, {
+    headers: { 'Cache-Control': `max-age=${seconds}, s-maxage=${seconds}` },
+  }));
+}
 
 export async function onRequestPost({ request, env }) {
   let body;
@@ -15,6 +54,39 @@ export async function onRequestPost({ request, env }) {
   if (name.length < 2) return json({ error: 'name_too_short' }, 400);
   const digits = phone.replace(/\D/g, '');
   if (digits.length < 8) return json({ error: 'phone_invalid' }, 400);
+
+  // Hours gate - no bridge outside Mon-Sat 09:30-18:00 Paris.
+  if (!isInParisHours()) {
+    return json({ error: 'outside_hours' }, 403);
+  }
+
+  // ==== Rate limits ====
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const phoneDigits = digits;
+
+  const ipHit = await cacheCheck(request, '/__rl_ip__/' + encodeURIComponent(ip));
+  if (ipHit) return json({ error: 'rate_limited', retryAfter: COOLDOWN_SECONDS }, 429);
+
+  const phoneHit = await cacheCheck(request, '/__rl_phone__/' + phoneDigits);
+  if (phoneHit) return json({ error: 'rate_limited', retryAfter: COOLDOWN_SECONDS }, 429);
+
+  // Global counter: bump and reject if over GLOBAL_MAX_IN_WINDOW.
+  const globalKey = '/__rl_global__/window';
+  const globalHit = await cacheCheck(request, globalKey);
+  let globalCount = 0;
+  if (globalHit) {
+    const txt = await globalHit.text();
+    globalCount = parseInt(txt, 10) || 0;
+  }
+  if (globalCount >= GLOBAL_MAX_IN_WINDOW) {
+    return json({ error: 'global_rate_limited' }, 429);
+  }
+
+  // Mark rate-limit cooldowns BEFORE the OVH call so a retry while the call
+  // is still in flight is also blocked.
+  await cacheSet(request, '/__rl_ip__/' + encodeURIComponent(ip), COOLDOWN_SECONDS);
+  await cacheSet(request, '/__rl_phone__/' + phoneDigits, COOLDOWN_SECONDS);
+  await cacheSet(request, globalKey, GLOBAL_WINDOW_SECONDS, String(globalCount + 1));
 
   // Cloudflare Turnstile: verify unless secret not set (local dev).
   if (env.TURNSTILE_SECRET) {

@@ -58,6 +58,19 @@
 - **i18n EN/FR** (landing only) - `data-i18n` / `data-i18n-html` attributes, EN harvested from DOM, FR dictionary inline in the script tag
 - **Dev bar** - hidden by default, unlock via `?dev=1` in URL or ⌥⇧D keyboard shortcut. Toggles theme (light/system/dark) and lang (EN/FR).
 
+## Email setup
+- **Domain**: q4o.com (managed as Cloudflare zone)
+- **Inbound**: Cloudflare Email Routing → forwards to vincentfraillon@gmail.com
+  - Routes: `vincent@q4o.com`, `partnerships@q4o.com`, `admin@q4o.com`, plus `*@q4o.com` catch-all
+  - MX records auto-managed by Cloudflare
+- **Outbound**: Gmail "Send mail as" via Brevo SMTP relay (`smtp-relay.brevo.com:587`, TLS)
+  - Brevo free tier: 300 emails/day
+  - SPF/DKIM/DMARC TXT records live on q4o.com zone in Cloudflare (added during Brevo domain auth)
+  - SMTP credentials in `.env.local` as `BREVO_SMTP_USER` and `BREVO_SMTP_KEY` (never in git; also backed up in 1Password / password manager — the key is shown once by Brevo)
+  - Gmail "From:" aliases configured per address: `vincent@`, `partnerships@`, `admin@`
+  - Gmail Settings → Accounts → "Reply from the same address the message was sent to"
+- **Sending logs**: Brevo dashboard → Statistics → Email → Transactional (14-day retention on free tier)
+
 ## Deployment
 - Push to `main` → Cloudflare Pages auto-builds (~10-30s)
 - Hard refresh (Cmd+Shift+R) often needed due to CDN caching
